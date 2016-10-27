@@ -1,3 +1,24 @@
+#--- FUNCTION ----------------------------------------------------------------
+# NAME: echoerr
+# DESCRIPTION: Echo errors to stderr.
+#-------------------------------------------------------------------------------
+echoerror() {
+    printf "${RC} * ERROR${EC}: $@\n" 1>&2;
+}
+
+#--- FUNCTION ----------------------------------------------------------------
+# NAME: echoinfo
+# DESCRIPTION: Echo information to stdout.
+#-------------------------------------------------------------------------------
+echoinfo() {
+    printf "${GC} * INFO${EC}: %s\n" "$@";
+}
+
+__apt_get_install_noinput() {
+    apt-get install -y -o DPkg::Options::=--force-confold $@; return $?
+}
+
+
 install_ubuntu_14.04_packages() {
     packages="aeskeyfind
 afflib-tools
